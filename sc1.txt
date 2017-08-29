@@ -1,0 +1,115 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema schema1
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema schema1
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `schema1` ;
+-- -----------------------------------------------------
+-- Schema database
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema database
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `database` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema database123
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema database123
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `database123` DEFAULT CHARACTER SET utf8 ;
+USE `schema1` ;
+
+-- -----------------------------------------------------
+-- Table `schema1`.`Departments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema1`.`Departments` (
+  `dept_id` INT NULL AUTO_INCREMENT,
+  `dept_name` VARCHAR(45) NULL,
+  `location` VARCHAR(45) NULL,
+  PRIMARY KEY (`dept_id`),
+  UNIQUE INDEX `dept_name_UNIQUE` (`dept_name` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema1`.`Employees`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema1`.`Employees` (
+  `emp_id` INT NULL AUTO_INCREMENT,
+  `emp_name` VARCHAR(45) NULL,
+  `dept_id` INT NULL,
+  `address` VARCHAR(45) NULL,
+  `salary` BIGINT(5) NULL,
+  `job_id` INT NULL,
+  `comm` INT NULL,
+  PRIMARY KEY (`emp_id`),
+  INDEX `dept_id_idx` (`dept_id` ASC),
+  CONSTRAINT `dept_id`
+    FOREIGN KEY (`dept_id`)
+    REFERENCES `schema1`.`Departments` (`dept_id`)
+    ON DELETE SET NULL
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema1`.`Bonus`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema1`.`Bonus` (
+  `bouns_id` INT NULL AUTO_INCREMENT,
+  `emp_name` VARCHAR(45) NULL,
+  `bonus_amt` BIGINT(4) NULL,
+  `job_id` INT NULL,
+  `salary` BIGINT(5) NULL,
+  `comm` INT NULL,
+  PRIMARY KEY (`bouns_id`))
+ENGINE = InnoDB;
+
+USE `database` ;
+
+-- -----------------------------------------------------
+-- Table `database`.`employeeinfo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `database`.`employeeinfo` (
+  `idEmployeeInfo` INT(11) NOT NULL COMMENT 'ID value should be unique and not null',
+  `name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'give the first name of employee',
+  `last_name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'give the last name of employees',
+  `age` INT(11) NOT NULL COMMENT 'give current age',
+  PRIMARY KEY (`idEmployeeInfo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Detailed  information about all the employees.';
+
+USE `database123` ;
+
+-- -----------------------------------------------------
+-- Table `database123`.`employeeinfo123`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `database123`.`employeeinfo123` (
+  `idEmployeeInfo` INT(11) NOT NULL COMMENT 'ID value should be unique and not null',
+  `name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'give the first name of employee',
+  `last_name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'give the last name of employees',
+  `age` INT(11) NOT NULL COMMENT 'give current age',
+  PRIMARY KEY (`idEmployeeInfo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Detailed  information about all the employees.';
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
