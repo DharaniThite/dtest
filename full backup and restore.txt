@@ -1,0 +1,83 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p Database>c:\backup\databasebackup.s
+ql
+Enter password: ********
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p Database>c:\backup\databasedb.sql
+Enter password: ********
+mysqldump: Got error: 2005: Unknown MySQL server host 'dbtestinstance.cslljo3f2b
+fg.us-east-2.rds.amazonaws.com' (0) when trying to connect
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p Database>c:\backup\databasedb.sql
+Enter password: ********
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases --tables employeesinfo>
+c:\backup\tableemployees.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeesinfo' when selecting the
+database
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases --tables employeeinfo>c
+:\backup\tableemployee.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeeinfo' when selecting the d
+atabase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --database --tables employeeinfo>c:
+\backup\employeeinfo.sql
+mysqldump: [ERROR] unknown option '--database'
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases --tables employeeinfo>c
+:\backup\employeeinfo.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeeinfo' when selecting the d
+atabase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases --tables employeeinfo>c
+:\backup\employeeinfo.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeeinfo' when selecting the d
+atabase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --tables employeeinfo>c:\backup\emp
+loyeeinfo.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeeinfo' when selecting the d
+atabase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases --tables employeeinfo>c
+:\backup\employeeinfo.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'employeeinfo' when selecting the d
+atabase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h dbtestinstance.cslljo3f
+2bfg.us-east-2.rds.amazonaws.com -u Admin -p --databases database --tables emplo
+yeeinfo>c:\backup\employeeinfo.sql
+Enter password: ********
+mysqldump: Got error: 1049: Unknown database 'database' when selecting the datab
+ase
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -h dbtestinstance.cslljo3f2bfg
+.us-east-2.rds.amazonaws.com -u Admin -p Database<c:\backup\databaserestore.sql
+The system cannot find the file specified.
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -h dbtestinstance.cslljo3f2bfg
+.us-east-2.rds.amazonaws.com -u Admin -p Database<c:\backup\databasedb.sql
+Enter password: ********
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>
