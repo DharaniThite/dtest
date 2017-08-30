@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `departmentsinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `departmentsinfo` (
+CREATE TABLE IF NOT EXISTS `departmentsinfo` (
   `dept_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'give the ID for department',
   `dept_name` varchar(45) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
@@ -47,7 +47,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `employeesinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `employeesinfo` (
+CREATE TABLE IF NOT EXISTS `employeesinfo` (
   `idEmployeeInfo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID value should be unique and not null',
   `Emp_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
