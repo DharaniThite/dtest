@@ -173,4 +173,27 @@ mysql> desc subjectdetails;
 +-------------+-------------+------+-----+---------+----------------+
 3 rows in set (0.00 sec)
 
-mysql>
+mysql> select * from subjectdetails;
++--------+------------------+-------------+
+| sub_id | sub_name         | total_marks |
++--------+------------------+-------------+
+|    101 | Computer Network |         100 |
+|    102 | SQL              |         100 |
+|    103 | Electronics      |         100 |
+|    104 | Maths            |         100 |
+|    105 | Java             |         100 |
++--------+------------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from testdetails;
++---------+-------------+--------+----------+
+| test_id | test_name   | sub_id | name     |
++---------+-------------+--------+----------+
+|       1 | Preliminary |    104 | Avantika |
+|       2 | Final       |    102 | Dhanush  |
+|       3 | Test        |    101 | Raunak   |
+|       4 | Final       |    105 | Priya    |
+|       5 | Test        |    103 | Pranav   |
+|       6 | Preliminary |    105 | Akansha  |
++---------+-------------+--------+----------+
+6 rows in set (0.00 sec)
