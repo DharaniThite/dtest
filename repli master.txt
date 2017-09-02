@@ -1,0 +1,92 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> grant replication slave on m.m to 'root'@'192.168.1.2' identified by 'roo
+t';
+ERROR 1144 (42000): Illegal GRANT/REVOKE command; please consult the manual to s
+ee which privileges can be used
+mysql> grant replication slave on m.* to 'root'@'192.168.1.2' identified by 'roo
+t';
+ERROR 1221 (HY000): Incorrect usage of DB GRANT and GLOBAL PRIVILEGES
+mysql> create user 'repl'@'%.root' identified by 'root';
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> grant replication slave on *.* to 'repl'@'%.root';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show master status;
++------------------+----------+--------------+------------------+---------------
+----+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_
+Set |
++------------------+----------+--------------+------------------+---------------
+----+
+| mysql-bin.000001 |      757 |              |                  |
+    |
++------------------+----------+--------------+------------------+---------------
+----+
+1 row in set (0.00 sec)
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show master status;
++------------------+----------+--------------+------------------+---------------
+----+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_
+Set |
++------------------+----------+--------------+------------------+---------------
+----+
+| mysql-bin.000002 |      884 |              |                  |
+    |
++------------------+----------+--------------+------------------+---------------
+----+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| database123        |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| schema1            |
+| sys                |
+| test               |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use test;
+Database changed
+mysql> create database tutorial;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> create database tutorial2;
+Query OK, 1 row affected (0.03 sec)
+
+mysql>
