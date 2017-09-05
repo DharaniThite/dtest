@@ -1,0 +1,81 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'finley'@'localhost' identified by 'pass';
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> grant all privileges on *.* to 'finley'@'localhost'
+    -> with grant option;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> create user 'finely'@'%' identified by 'pass';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on *.* to 'finely'@'%'
+    -> with grant option;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create user 'customer'@'localhost' identified by 'customer';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant select, insert, update, create, drop
+    -> on bankaccount.*
+    -> to 'customer'@'localhost';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create user 'jefrey'@'localhost' identified by 'jefrey';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> drop user 'jefrey'@'localhost';
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create user 'freppy'@'localhost' identified by 'freppy'
+    -> with max_queries_per_hour 20
+    -> max_updates_per_hour 10
+    -> max_connections_per_hour 5
+    -> max_user_connections 2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter user 'freppy'@'localhost' with max_queries_per_hour 100;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter user 'freppy'@'localhost' identified by 'freppyy';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter user 'customer'@'localhost' password expire;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create user 'dba'@'localhost' password expire interval 90 day;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter user 'dba'@'localhost' password expire interval 100 day;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set global default_password_lifetime=180;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> alter user 'customer'@'localhost' password expire default;
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql>
