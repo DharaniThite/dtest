@@ -1,0 +1,56 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'user1'@'localhost' identified by 'password';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on *.* to 'user1'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create user 'user2'@'localhost' identified by 'password1';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant select, insert, update, drop, create on *.* to 'user2'@'localhost';
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show grants for 'user1'@'localhost';
++----------------------------------------------------+
+| Grants for user1@localhost                         |
++----------------------------------------------------+
+| GRANT ALL PRIVILEGES ON *.* TO 'user1'@'localhost' |
++----------------------------------------------------+
+1 row in set (0.02 sec)
+
+mysql> show grants for 'user2'@'localhost';
++--------------------------------------------------------------------------+
+| Grants for user2@localhost                                               |
++--------------------------------------------------------------------------+
+| GRANT SELECT, INSERT, UPDATE, CREATE, DROP ON *.* TO 'user2'@'localhost' |
++--------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql>
