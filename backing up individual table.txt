@@ -1,0 +1,14 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h localhost -u root -p te
+st subjectdetails>c:\backup\subjectdetails.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>
