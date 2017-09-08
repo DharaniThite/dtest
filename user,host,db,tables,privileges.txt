@@ -1,0 +1,601 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 660
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user, host from mysql.user order by user desc, host desc;
++---------------+-------------+
+| user          | host        |
++---------------+-------------+
+| user9         | localhost   |
+| user8         | localhost   |
+| user7         | localhost   |
+| user6         | localhost   |
+| user5         | localhost   |
+| user3         | localhost   |
+| user2         | localhost   |
+| user12        | localhost   |
+| user11        | localhost   |
+| user10        | localhost   |
+| user1         | localhost   |
+| user1         | %           |
+| test          | localhost   |
+| tata          | localhost   |
+| root          | localhost   |
+| root          | 192.168.1.2 |
+| repl          | %root       |
+| repl          | %.root      |
+| mysql.sys     | localhost   |
+| mysql.session | localhost   |
+| jeffrey       | localhost   |
+| freppy        | localhost   |
+| finley        | localhost   |
+| finely        | localhost   |
+| finely        | %           |
+| dba           | localhost   |
+| db            | localhost   |
+| db            | %           |
+| data          | localhost   |
+| customer      | localhost   |
+| custom        | localhost   |
+| custom        |             |
+| branch        | localhost   |
+| admin         | localhost   |
+| Admin         | localhost   |
+| Admin         | %           |
++---------------+-------------+
+36 rows in set (0.00 sec)
+
+mysql> select user, host, super_priv, create_user_priv, grant_priv from mysql.us
+er where create_user_priv='Y' and grant_priv='Y';
++--------+-----------+------------+------------------+------------+
+| user   | host      | super_priv | create_user_priv | grant_priv |
++--------+-----------+------------+------------------+------------+
+| root   | localhost | Y          | Y                | Y          |
+| admin  | localhost | Y          | Y                | Y          |
+| user1  | %         | Y          | Y                | Y          |
+| db     | localhost | Y          | Y                | Y          |
+| db     | %         | Y          | Y                | Y          |
+| finley | localhost | Y          | Y                | Y          |
+| finely | %         | Y          | Y                | Y          |
++--------+-----------+------------+------------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select user, host, super_priv, create_user_priv, grant_priv from mysql.us
+er where create_user_priv='N' and grant_priv='N';
++---------------+-------------+------------+------------------+------------+
+| user          | host        | super_priv | create_user_priv | grant_priv |
++---------------+-------------+------------+------------------+------------+
+| mysql.session | localhost   | Y          | N                | N          |
+| mysql.sys     | localhost   | N          | N                | N          |
+| Admin         | %           | N          | N                | N          |
+| root          | 192.168.1.2 | N          | N                | N          |
+| repl          | %.root      | N          | N                | N          |
+| repl          | %root       | N          | N                | N          |
+| Admin         | localhost   | N          | N                | N          |
+| data          | localhost   | N          | N                | N          |
+| custom        | localhost   | N          | N                | N          |
+| jeffrey       | localhost   | N          | N                | N          |
+| test          | localhost   | N          | N                | N          |
+| finely        | localhost   | N          | N                | N          |
+| custom        |             | N          | N                | N          |
+| customer      | localhost   | N          | N                | N          |
+| freppy        | localhost   | N          | N                | N          |
+| dba           | localhost   | N          | N                | N          |
+| user2         | localhost   | N          | N                | N          |
+| tata          | localhost   | N          | N                | N          |
+| user5         | localhost   | N          | N                | N          |
+| user6         | localhost   | N          | N                | N          |
+| user7         | localhost   | N          | N                | N          |
+| user8         | localhost   | N          | N                | N          |
+| user9         | localhost   | N          | N                | N          |
+| user10        | localhost   | N          | N                | N          |
+| user11        | localhost   | Y          | N                | N          |
+| user12        | localhost   | N          | N                | N          |
+| branch        | localhost   | N          | N                | N          |
++---------------+-------------+------------+------------------+------------+
+27 rows in set (0.00 sec)
+
+mysql> select * from mysql.user\G;
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *2C8BCF8625930454A2B4A1D946A910DF85B0012C
+      password_expired: N
+ password_last_changed: 2017-09-06 16:39:28
+     password_lifetime: NULL
+        account_locked: N
+*************************** 31. row ***************************
+                  Host: localhost
+                  User: user8
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: N
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: N
+            Super_priv: N
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *AEE0104711CE8D00C4FE9F2690B16A825E433750
+      password_expired: N
+ password_last_changed: 2017-09-06 16:40:12
+     password_lifetime: NULL
+        account_locked: N
+*************************** 32. row ***************************
+                  Host: localhost
+                  User: user9
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: N
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: Y
+            Super_priv: N
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *54DFC5E151FA45166A2350AE664B31A5AD7E8D58
+      password_expired: N
+ password_last_changed: 2017-09-06 16:40:52
+     password_lifetime: NULL
+        account_locked: N
+*************************** 33. row ***************************
+                  Host: localhost
+                  User: user10
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: Y
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: N
+            Super_priv: N
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *9AA36F388A2AD821EFDB3969227F9D51CA157360
+      password_expired: N
+ password_last_changed: 2017-09-06 16:41:30
+     password_lifetime: NULL
+        account_locked: N
+*************************** 34. row ***************************
+                  Host: localhost
+                  User: user11
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: N
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: N
+            Super_priv: Y
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *EEA3D5BA534EA1FCD22E64C61E8D59132ADF346B
+      password_expired: N
+ password_last_changed: 2017-09-06 16:42:13
+     password_lifetime: NULL
+        account_locked: N
+*************************** 35. row ***************************
+                  Host: localhost
+                  User: user12
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: N
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: N
+            Super_priv: N
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *E414A7D17839E0F29789CAD8E2F1706C1F43D4C7
+      password_expired: N
+ password_last_changed: 2017-09-06 16:42:37
+     password_lifetime: NULL
+        account_locked: N
+*************************** 36. row ***************************
+                  Host: localhost
+                  User: branch
+           Select_priv: N
+           Insert_priv: N
+           Update_priv: N
+           Delete_priv: N
+           Create_priv: N
+             Drop_priv: N
+           Reload_priv: N
+         Shutdown_priv: N
+          Process_priv: N
+             File_priv: N
+            Grant_priv: N
+       References_priv: N
+            Index_priv: N
+            Alter_priv: N
+          Show_db_priv: N
+            Super_priv: N
+ Create_tmp_table_priv: N
+      Lock_tables_priv: N
+          Execute_priv: N
+       Repl_slave_priv: N
+      Repl_client_priv: N
+      Create_view_priv: N
+        Show_view_priv: N
+   Create_routine_priv: N
+    Alter_routine_priv: N
+      Create_user_priv: N
+            Event_priv: N
+          Trigger_priv: N
+Create_tablespace_priv: N
+              ssl_type:
+            ssl_cipher:
+           x509_issuer:
+          x509_subject:
+         max_questions: 0
+           max_updates: 0
+       max_connections: 0
+  max_user_connections: 0
+                plugin: mysql_native_password
+ authentication_string: *54951E89970A4632A7FB16923358DC53583AE5CC
+      password_expired: N
+ password_last_changed: 2017-09-08 11:50:35
+     password_lifetime: NULL
+        account_locked: N
+36 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> select host,user, select_priv from mysql.user\G;
+*************************** 1. row ***************************
+       host: localhost
+       user: root
+select_priv: Y
+*************************** 2. row ***************************
+       host: localhost
+       user: mysql.session
+select_priv: N
+*************************** 3. row ***************************
+       host: localhost
+       user: mysql.sys
+select_priv: N
+*************************** 4. row ***************************
+       host: localhost
+       user: admin
+select_priv: Y
+*************************** 5. row ***************************
+       host: %
+       user: user1
+select_priv: Y
+*************************** 6. row ***************************
+       host: %
+       user: Admin
+select_priv: N
+*************************** 7. row ***************************
+       host: 192.168.1.2
+       user: root
+select_priv: N
+*************************** 8. row ***************************
+       host: %.root
+       user: repl
+select_priv: N
+*************************** 9. row ***************************
+       host: %root
+       user: repl
+select_priv: N
+*************************** 10. row ***************************
+       host: localhost
+       user: db
+select_priv: Y
+*************************** 11. row ***************************
+       host: %
+       user: db
+select_priv: Y
+*************************** 12. row ***************************
+       host: localhost
+       user: Admin
+select_priv: N
+*************************** 13. row ***************************
+       host: localhost
+       user: data
+select_priv: N
+*************************** 14. row ***************************
+       host: localhost
+       user: custom
+select_priv: N
+*************************** 15. row ***************************
+       host: localhost
+       user: jeffrey
+select_priv: N
+*************************** 16. row ***************************
+       host: localhost
+       user: finley
+select_priv: Y
+*************************** 17. row ***************************
+       host: %
+       user: finely
+select_priv: Y
+*************************** 18. row ***************************
+       host: localhost
+       user: test
+select_priv: N
+*************************** 19. row ***************************
+       host: localhost
+       user: finely
+select_priv: N
+*************************** 20. row ***************************
+       host:
+       user: custom
+select_priv: N
+*************************** 21. row ***************************
+       host: localhost
+       user: customer
+select_priv: N
+*************************** 22. row ***************************
+       host: localhost
+       user: freppy
+select_priv: N
+*************************** 23. row ***************************
+       host: localhost
+       user: dba
+select_priv: N
+*************************** 24. row ***************************
+       host: localhost
+       user: user1
+select_priv: Y
+*************************** 25. row ***************************
+       host: localhost
+       user: user2
+select_priv: N
+*************************** 26. row ***************************
+       host: localhost
+       user: user3
+select_priv: N
+*************************** 27. row ***************************
+       host: localhost
+       user: tata
+select_priv: Y
+*************************** 28. row ***************************
+       host: localhost
+       user: user5
+select_priv: N
+*************************** 29. row ***************************
+       host: localhost
+       user: user6
+select_priv: N
+*************************** 30. row ***************************
+       host: localhost
+       user: user7
+select_priv: N
+*************************** 31. row ***************************
+       host: localhost
+       user: user8
+select_priv: N
+*************************** 32. row ***************************
+       host: localhost
+       user: user9
+select_priv: N
+*************************** 33. row ***************************
+       host: localhost
+       user: user10
+select_priv: N
+*************************** 34. row ***************************
+       host: localhost
+       user: user11
+select_priv: N
+*************************** 35. row ***************************
+       host: localhost
+       user: user12
+select_priv: N
+*************************** 36. row ***************************
+       host: localhost
+       user: branch
+select_priv: N
+36 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| database123        |
+| desk               |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+17 rows in set (0.00 sec)
+
+mysql> use services;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_services |
++--------------------+
+| datas              |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql>

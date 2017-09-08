@@ -1,0 +1,105 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 755
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| database123        |
+| desk               |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+17 rows in set (0.02 sec)
+
+mysql> use data;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table info(id int(3), name varchar(20), address varchar(20));
+Query OK, 0 rows affected (0.45 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_data |
++----------------+
+| info           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> grant lock tables on data.* to 'root'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant create, alter, drop on data.info to 'root'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant delete,index,insert,select,update on data.* to 'root'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show grants for 'root'@'localhost';
++-------------------------------------------------------------------------------
+-----+
+| Grants for root@localhost
+     |
++-------------------------------------------------------------------------------
+-----+
+| GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION
+     |
+| GRANT ALL PRIVILEGES ON `data`.* TO 'root'@'localhost'
+     |
+| GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON `tutorial`.* TO 'root'@'localh
+ost' |
+| GRANT ALL PRIVILEGES ON `test1`.* TO 'root'@'localhost'
+     |
+| GRANT ALL PRIVILEGES ON `services`.* TO 'root'@'localhost'
+     |
+| GRANT ALL PRIVILEGES ON `services`.`datas` TO 'root'@'localhost'
+     |
+| GRANT ALL PRIVILEGES ON `datas`.`services` TO 'root'@'localhost'
+     |
+| GRANT CREATE, DROP, ALTER ON `data`.`info` TO 'root'@'localhost'
+     |
+| GRANT PROXY ON ''@'' TO 'root'@'localhost' WITH GRANT OPTION
+     |
++-------------------------------------------------------------------------------
+-----+
+9 rows in set (0.02 sec)
+
+mysql>
