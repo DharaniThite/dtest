@@ -1,0 +1,282 @@
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select version();
++------------+
+| version()  |
++------------+
+| 5.7.19-log |
++------------+
+1 row in set (0.08 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| database123        |
+| desk               |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+17 rows in set (0.00 sec)
+
+mysql> show variables like 'general%';
++------------------+-------------+
+| Variable_name    | Value       |
++------------------+-------------+
+| general_log      | OFF         |
+| general_log_file | DELL-PC.log |
++------------------+-------------+
+2 rows in set (0.09 sec)
+
+mysql> set global general_log='ON';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show variables like 'general%';
++------------------+-------------+
+| Variable_name    | Value       |
++------------------+-------------+
+| general_log      | ON          |
+| general_log_file | DELL-PC.log |
++------------------+-------------+
+2 rows in set (0.01 sec)
+
+mysql> use mysql;
+Database changed
+
+mysql> show variables like 'slow%';
++---------------------+------------------+
+| Variable_name       | Value            |
++---------------------+------------------+
+| slow_launch_time    | 2                |
+| slow_query_log      | ON               |
+| slow_query_log_file | DELL-PC-slow.log |
++---------------------+------------------+
+3 rows in set (0.01 sec)
+
+mysql> show variables like 'long_query_time';
++-----------------+-----------+
+| Variable_name   | Value     |
++-----------------+-----------+
+| long_query_time | 10.000000 |
++-----------------+-----------+
+1 row in set (0.01 sec)
+
+mysql> select sleep(11);
++-----------+
+| sleep(11) |
++-----------+
+|         0 |
++-----------+
+1 row in set (11.05 sec)
+
+mysql> show variables like 'log_output';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | FILE  |
++---------------+-------+
+1 row in set (0.00 sec)
+
+mysql> set global log_output="TABLE";
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show variables like 'log_output';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | TABLE |
++---------------+-------+
+1 row in set (0.12 sec)
+
+mysql> use mysql;
+Database changed
+mysql> show tables;
++---------------------------+
+| Tables_in_mysql           |
++---------------------------+
+| columns_priv              |
+| db                        |
+| engine_cost               |
+| event                     |
+| func                      |
+| general_log               |
+| gtid_executed             |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| innodb_index_stats        |
+| innodb_table_stats        |
+| ndb_binlog_index          |
+| plugin                    |
+| proc                      |
+| procs_priv                |
+| proxies_priv              |
+| server_cost               |
+| servers                   |
+| slave_master_info         |
+| slave_relay_log_info      |
+| slave_worker_info         |
+| slow_log                  |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| user                      |
++---------------------------+
+31 rows in set (0.01 sec)
+
+mysql> select * from general_log;
++----------------------------+------------------------------------+-----------+-
+----------+--------------+------------------------------------------------------
+----------+
+| event_time                 | user_host                          | thread_id |
+server_id | command_type | argument
+          |
++----------------------------+------------------------------------+-----------+-
+----------+--------------+------------------------------------------------------
+----------+
+| 2017-09-12 14:14:04.152009 | root[root] @ localhost [::1]       |       183 |
+        1 | Query        | show variables like 'log_output'
+          |
+| 2017-09-12 14:14:21.090625 | [root] @ localhost [127.0.0.1]     |       192 |
+        1 | Connect      | root@localhost on  using TCP/IP
+          |
+| 2017-09-12 14:14:21.090625 | root[root] @ localhost [127.0.0.1] |       192 |
+        1 | Connect      | Access denied for user 'root'@'localhost' (using pass
+word: NO) |
+| 2017-09-12 14:14:27.453758 | root[root] @ localhost [::1]       |       183 |
+        1 | Query        | SELECT DATABASE()
+          |
+| 2017-09-12 14:14:27.453758 | root[root] @ localhost [::1]       |       183 |
+        1 | Init DB      | mysql
+          |
+| 2017-09-12 14:14:31.853166 | root[root] @ localhost [::1]       |       183 |
+        1 | Query        | show tables
+          |
+| 2017-09-12 14:15:11.404858 | root[root] @ localhost [::1]       |       183 |
+        1 | Query        | select * from general_log
+          |
++----------------------------+------------------------------------+-----------+-
+----------+--------------+------------------------------------------------------
+----------+
+7 rows in set (0.03 sec)
+
+mysql> select * from slow_log;
+Empty set (0.03 sec)
+
+mysql> select sleep(11);
++-----------+
+| sleep(11) |
++-----------+
+|         0 |
++-----------+
+1 row in set (11.00 sec)
+
+mysql> select * from slow_log;
++----------------------------+------------------------------+-----------------+-
+----------------+-----------+---------------+-------+----------------+----------
+-+-----------+------------------+-----------+
+| start_time                 | user_host                    | query_time      |
+lock_time       | rows_sent | rows_examined | db    | last_insert_id | insert_id
+ | server_id | sql_text         | thread_id |
++----------------------------+------------------------------+-----------------+-
+----------------+-----------+---------------+-------+----------------+----------
+-+-----------+------------------+-----------+
+| 2017-09-12 14:15:40.413731 | root[root] @ localhost [::1] | 00:00:11.002054 |
+00:00:00.000000 |         1 |             0 | mysql |              0 |         0
+ |         1 | select sleep(11) |       183 |
++----------------------------+------------------------------+-----------------+-
+----------------+-----------+---------------+-------+----------------+----------
+-+-----------+------------------+-----------+
+1 row in set (0.01 sec)
+
+mysql> \s
+--------------
+mysql  Ver 14.14 Distrib 5.7.19, for Win64 (x86_64)
+
+Connection id:          183
+Current database:       mysql
+Current user:           root@localhost
+SSL:                    Not in use
+Using delimiter:        ;
+Server version:         5.7.19-log MySQL Community Server (GPL)
+Protocol version:       10
+Connection:             localhost via TCP/IP
+Server characterset:    utf8
+Db     characterset:    utf8
+Client characterset:    cp850
+Conn.  characterset:    cp850
+TCP port:               3306
+Uptime:                 3 hours 41 min 20 sec
+
+Threads: 3  Questions: 41  Slow queries: 2  Opens: 119  Flush tables: 1  Open ta
+bles: 111  Queries per second avg: 0.003
+--------------
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| database123        |
+| desk               |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+17 rows in set (0.00 sec)
+
+mysql> drop database desk;
+Query OK, 1 row affected (0.52 sec)
+
+mysql> flush logs'
+    '> \c
+    '> '
+    -> \c
+mysql> flush logs;
+Query OK, 0 rows affected (0.49 sec)
+
+mysql> show variables like '%bin%size%';
++----------------------------+----------------------+
+| Variable_name              | Value                |
++----------------------------+----------------------+
+| binlog_cache_size          | 32768                |
+| binlog_stmt_cache_size     | 32768                |
+| max_binlog_cache_size      | 18446744073709547520 |
+| max_binlog_size            | 1073741824           |
+| max_binlog_stmt_cache_size | 18446744073709547520 |
++----------------------------+----------------------+
+5 rows in set (0.01 sec)
+
+mysql>
