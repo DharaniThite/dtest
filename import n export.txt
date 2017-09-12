@@ -1,0 +1,111 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd..
+
+C:\Users>cd..
+
+C:\>cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysqldump -h localhost -u root -p da
+tabase123>C:\backup\database123.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 349
+Server version: 5.7.19-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> drop database database123;
+Query OK, 1 row affected (0.45 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+15 rows in set (0.00 sec)
+ 
+mysql> exit;
+Bye
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>mysql -h localhost -u root -p databa
+se123<C:\backup\database123.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 5.7\bin>
+mysql> create database database123;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| data               |
+| data1              |
+| database123        |
+| mysql              |
+| new_schema         |
+| performance_schema |
+| replidata          |
+| sampdb             |
+| schema1            |
+| services           |
+| sys                |
+| test               |
+| test1              |
+| tutorial           |
+| tutorial2          |
++--------------------+
+16 rows in set (0.00 sec)
+
+mysql> use database123;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_database123 |
++-----------------------+
+| employeeinfo123       |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> describe employeeinfo123;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| idEmployeeInfo | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name           | varchar(45) | YES  |     | NULL    |                |
+| last_name      | varchar(45) | YES  |     | NULL    |                |
+| age            | int(11)     | NO   |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql>
